@@ -15,12 +15,8 @@ function toggleBodyScroll () {
 }
 
 
-function isDangerous (string) {
-  if (string.includes('<script>')) {
-    return true
-  } else {
-    return false
-  }
+function sanitizeString (string) {
+  return String(string).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
 function changePage (page) {
@@ -32,32 +28,59 @@ function changePage (page) {
 }
 
 function addAnnouncement (announcement) {
-  if (isDangerous(announcement)) {
-    return
-  } else {
     $('#announcementsList').append('<li><div class="row"><div class="col s12 m5"><div class="card-panel white"><span class="black-text">' + announcement + '</span></div></div></div></li>')
-  }
 }
 
 function addNews (image, title, news) {
   var articleTemplate = '<li><div class="card small"><div class="card-image waves-effect waves-block waves-light"><img class="activator" src="newsArticleImage"></div><div class="card-content"><span class="card-title activator grey-text text-darken-4">newsArticleTitle<i class="material-icons right">more_vert</i></span></div><div class="card-reveal reveal-fullscreen"><span class="card-title grey-text text-darken-4">newsArticleTitle<i class="material-icons deactivator right">close</i></span>newsArticleContent</div></div></li>'
-  var articleEdited = articleTemplate.replace('newsArticleImage', image).replace('newsArticleTitle', title).replace('newsArticleContent', news)
+  var articleEdited = articleTemplate.replace('newsArticleImage', sanitizeString(image)).replace('newsArticleTitle', title).replace('newsArticleContent', sanitizeString(news))
 
-  if (isDangerous(articleEdited)) {
-    return
-  } else {
-    $('#newsList').append(articleEdited)
+  $('#newsList').append(articleEdited)
+}
+
+var testAnnouncementJSON = `{
+  "Announcements": [
+    "Programming club will be serving donuts for anyone who can write hello world in any language of choice",
+    "Smug Anime Faces on the rise",
+    "rare pepe memes decreasing in value SELL SELL SELL"
+  ]
+}`
+
+var testNewsJSON = `{
+  "Articles": [
+    {
+      "image": "http://i.imgur.com/IWQZaHD.gif",
+      "title": "Programming club meetings",
+      "body": "The programming club will be holding meetings on Thursdays after school"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    }
+  ]
+}`
+
+function addAnnouncementsFromJSON (json) {
+  var JSONBuffer = JSON.parse(json)
+  for (var i = 0; i < JSONBuffer.Announcements.length; i++) {
+    addAnnouncement(JSONBuffer.Announcements[i]);
   }
 }
 
-var testJSON = `{
-	"Announcements": [["EXAMPLE TEXT", "END DATE"],
-	["Programming club will be serving donuts for anyone who can write hello world in any language of choice", "11/07/16"]]
-}`;
-
-function addAnnouncementsFromJSON (json) {
-  var JSONBuffer = JSON.parse(json);
-  for (var i = 0; i < JSONBuffer.Announcements.length; i++) {
-    addAnnouncement(JSONBuffer.Announcements[i][0]);
+function addNewsFromJSON (json) {
+  var JSONBuffer = JSON.parse(json)
+  for (var i = 0; i < JSONBuffer.Articles.length; i++) {
+    addNews(JSONBuffer.Articles[i].image, JSONBuffer.Articles[i].title, JSONBuffer.Articles[i].body);
   }
 }

@@ -1,9 +1,24 @@
 {
-	"title": "Programming club meetings",
-	"body": "The programming club will be holding meetings on Thursdays after school",
-	"dates": [
-		"10/27/16",
-		"10/30/16"
-		],
-	"course": "Programming club"
+  "Articles": [
+    {
+      "image": "http://i.imgur.com/IWQZaHD.gif",
+      "title": "Programming club meetings",
+      "body": "The programming club will be holding meetings on Thursdays after school"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    },
+    {
+      "image": "http://i.imgur.com/nZneq9B.png",
+      "title": "log horizon still best show, like, ever",
+      "body": "log horizon remains #1 show hands down 2k16"
+    }
+  ]
 }
