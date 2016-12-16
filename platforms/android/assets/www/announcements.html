@@ -1,58 +1,40 @@
 <!DOCTYPE HTML>
 <html>
-    <!--
-    Bellerose Hub Frontend
-    Connor Leighton
-    -->
-    <head>
-        <title>Bellerose Hub</title>
-        <!-- Load Google Material Icons -->
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Load Materialize Stylesheet -->
-        <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
-        <!-- Load jQuery -->
-        <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
-        <!-- Load jQuery Mobile -->
-        <script type="text/javascript" src="assets/js/jquery.mobile-1.4.5.js"></script>
-        <!-- Load Materialize Script -->
-        <script src="assets/js/materialize.js"></script>
-        
-        <!-- Let browser know website is optimized for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body style="background-color: #212121">
-        <ul>
-            <li>
-                <div class="row">
-                    <div class="col s12 m5">
-                        <div class="card-panel white">
-                            <span class="black-text">This is the first announcement of the day. Maybe there's some cool event going on today or something; whatever the case, there's some information that needs to be conveyed here.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="row">
-                    <div class="col s12 m5">
-                        <div class="card-panel white">
-                            <span class="black-text">There can be as many announcements as needed in any one given day, and the card will scale appropriately.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="row">
-                    <div class="col s12 m5">
-                        <div class="card-panel white">
-                            <span class="black-text">I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </body>
+<!--
+Bellerose Hub Frontend
+Connor Leighton
+-->
+<head>
+  <title>Bellerose Hub</title>
+  <!-- Load Google Material Icons -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Load Materialize Stylesheet -->
+  <link type="text/css" rel="stylesheet" href="assets/css/materialize.css" media="screen,projection" />
+  <!-- Load jQuery -->
+  <script type="text/javascript" src="assets/js/jquery-3.1.1.js"></script>
+  <!-- Load jQuery Mobile -->
+  <script type="text/javascript" src="assets/js/jquery.mobile-1.4.5.js"></script>
+  <!-- Load Materialize Script -->
+  <script src="assets/js/materialize.js"></script>
+  <!-- Load Custom Scripts -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Let browser know website is optimized for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body style="background-color: #212121">
+  <template id="announcementTemplate">
+    <li>
+      <div class="row">
+        <div class="col s12 m5">
+          <div class="card-panel white">
+            <span class="black-text"></span>
+          </div>
+        </div>
+      </div>
+    </li>
+  </template>
+  <ul id="announcementsList">
+  </ul>
+</body>
 </html>
